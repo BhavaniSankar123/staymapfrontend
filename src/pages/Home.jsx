@@ -21,7 +21,7 @@ const Home = () => {
         <Carousels />
         <SortBy />
         <div className="flex space-x-4 ml-5 mr-8 mt-10">
-          <div className="flex flex-col gap-6 pr-2">
+          <div className="flex flex-col gap-6 pr-2 w-[70%]">
             <Card />
             <Card />
             <Card />
@@ -29,7 +29,7 @@ const Home = () => {
             <Card />
             <Card />
           </div>
-          <div className=" w-96">
+          <div>
             <Map />
           </div>
         </div>
