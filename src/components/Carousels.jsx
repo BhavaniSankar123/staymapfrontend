@@ -3,8 +3,8 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 const Carousels = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    // "https://placehold.co/100x30?text=Slide+1",
-    "https://tinyurl.com/mt5ysvsx",
+    "https://placehold.co/100x30?text=Slide+1",
+    // "https://tinyurl.com/mt5ysvsx",
     "https://placehold.co/100x30?text=Slide+2",
     "https://placehold.co/100x30?text=Slide+3",
     "https://placehold.co/100x30?text=Slide+4",

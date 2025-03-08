@@ -1,12 +1,9 @@
 import React from "react";
-
+import { mapURL } from "../utils/Constants";
 const Map = () => {
   return (
     <div>
-      <img
-        src="https://tinyurl.com/4cz2rjua"
-        alt="https://placehold.co/500x1000?text=Google-Map"
-      />
+      <img src={mapURL} alt="Google Map" />
     </div>
   );
 };

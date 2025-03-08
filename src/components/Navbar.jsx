@@ -1,10 +1,13 @@
 import { BsPersonCircle } from "react-icons/bs";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useState } from "react";
-// import "./Header.css";
-const Header = () => {
+import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+const Navbar = () => {
   const [dropdownExplore, setDropdownExplore] = useState(false);
   const [dropdownProfile, setDropdownProfile] = useState(false);
+  const exploreRef = useRef(null);
+  const profileRef = useRef(null);
 
   const handleDropdownExplore = () => {
     setDropdownExplore(!dropdownExplore);
@@ -14,9 +17,29 @@ const Header = () => {
     setDropdownProfile(!dropdownProfile);
     setDropdownExplore(false);
   };
+  const handleClickOutside = (event) => {
+    if (
+      exploreRef.current &&
+      !exploreRef.current.contains(event.target) &&
+      profileRef.current &&
+      !profileRef.current.contains(event.target)
+    ) {
+      setDropdownExplore(false);
+      setDropdownProfile(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className="bg-[#005ca8] h-[75px] font-bold p-8 pl-16 flex justify-between items-center">
-      <h1 className="text-white text-4xl font-bold">staymap</h1>
+      <Link to={"/"} className="text-white text-4xl font-bold">
+        staymap
+      </Link>
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <p className="text-white font-bold">POST PROPERTY</p>
@@ -24,7 +47,7 @@ const Header = () => {
             FREE
           </button>
         </div>
-        <div className="relative ">
+        <div className="relative " ref={exploreRef}>
           <button
             onClick={() => handleDropdownExplore()}
             className="flex text-white px-4 py-2 rounded"
@@ -34,28 +57,31 @@ const Header = () => {
           </button>
           {dropdownExplore && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-              <a
-                href="#"
+              <Link
+                to={"/about"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownExplore(false)}
               >
                 About Us
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/ourteam"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownExplore(false)}
               >
                 Our Team
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/contact"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownExplore(false)}
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           )}
         </div>
-        <div className="relative">
+        <div className="relative" ref={profileRef}>
           <button
             onClick={() => handleDropdownProfile()}
             className="flex text-white px-4 py-2 rounded"
@@ -65,24 +91,27 @@ const Header = () => {
           </button>
           {dropdownProfile && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-              <a
-                href="#"
+              <Link
+                to={"/login"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownProfile(false)}
               >
                 LOGIN/REGISTER
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/favourites"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownProfile(false)}
               >
                 Favourites
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/recentlyused"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
+                onClick={() => setDropdownProfile(false)}
               >
                 Recently Used
-              </a>
+              </Link>
             </div>
           )}
         </div>
@@ -91,4 +120,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

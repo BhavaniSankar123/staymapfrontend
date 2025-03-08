@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaTransgenderAlt } from "react-icons/fa";
+import { FaLocationDot, FaBed } from "react-icons/fa6";
+import { FaTransgenderAlt, FaFilter } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
-import { FaBed } from "react-icons/fa6";
-import { FaFilter } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Filters from "./Filters";
+import { locality, gender, sharing } from "../utils/Constants";
 
 const Category = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -19,11 +18,11 @@ const Category = () => {
         <div className="flex flex-col mt-4 text-sm">
           <p className="text-lg font-bold text-[#005ca8] p-1">Locality</p>
           <select className="border-none bg-transparent text-[#1c1c1c]/60">
-            <option value="Madhapur">Madhapur</option>
-            <option value="Gachibowli">Gachibowli</option>
-            <option value="Hi-Tech City">Hi-Tech City</option>
-            <option value="Ameerpet">Ameerpet</option>
-            <option value="Secunderabad">Secunderabad</option>
+            {locality.map((local) => (
+              <option key={local} value={local}>
+                {local}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -33,9 +32,11 @@ const Category = () => {
         <div className="flex flex-col mt-4 text-sm">
           <p className="text-lg font-bold text-[#005ca8] p-1">Gender</p>
           <select className="border-none bg-transparent text-[#1c1c1c]/60">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Co-live">Co-live</option>
+            {gender.map((gen) => (
+              <option key={gen} value={gen}>
+                {gen}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -44,11 +45,11 @@ const Category = () => {
         <div className="flex flex-col mt-4 text-sm">
           <p className="text-lg font-bold text-[#005ca8] p-1">Sharing</p>
           <select className="border-none bg-transparent text-[#1c1c1c]/60">
-            <option value="1">01</option>
-            <option value="2">02</option>
-            <option value="3">03</option>
-            <option value="4">04</option>
-            <option value="5">05</option>
+            {sharing.map((share) => (
+              <option key={share} value={share}>
+                {share}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -57,8 +58,8 @@ const Category = () => {
         <div className="flex flex-col mt-4 text-sm">
           <p className="text-lg font-bold text-[#005ca8] p-1">Room Type</p>
           <select className="border-none bg-transparent text-[#1c1c1c]/60">
-            <option value="Male">AC</option>
-            <option value="Female">Non-AC</option>
+            <option value="AC">AC</option>
+            <option value="Non-AC">Non-AC</option>
           </select>
         </div>
       </div>

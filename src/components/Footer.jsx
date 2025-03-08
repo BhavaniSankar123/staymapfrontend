@@ -59,9 +59,12 @@ const Footer = () => {
           <p>&copy;2025 | All Rights Reserved by Staymap Pvt Ltd.</p>
         </div>
       </div>
-      <div className="flex justify-center items-center text-[#004080] fixed bottom-[10%] bg-white size-20 rounded-full right-16 ">
+      <div className="flex justify-center items-center text-[#004080] fixed bottom-[5%] bg-white size-20 rounded-full right-2 ">
         {/* <FaMapMarkerAlt className="text-[#004080] text-5xl" /> */}
-        <img src="https://tinyurl.com/5538h3kf" alt="StayBot" />
+        <img
+          src="https://s3-alpha-sig.figma.com/img/25ac/3374/4f7fb7989e767db6b0c43ff63dbd542d?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=e99~INFN0j1RhJIvhfbPxwywpjpTiqVgZ9IPgYVPeAROfZ5jTaXZofcUZBI4KpH5uXv9ALYgJYT-JbB5jAR-Si~SPtQfdl7axjif51cV0Vj6xAFWKmGZW7O6GODLS4y20hVYFhi6zFZTWnh-Neevp-jsQ6f-oyTSIgqtUKDK1NCGBD5F82Tx1oss1QIIgvJIEI9xTQpn-UVt~MeMZNrBj8r983dsZByoE~3inWbUZj8NwW4nDItK~~OCobIW9TpwwUv81vSHfOXGx0XXEhXIac4NuKOSVtd4WHAXaMB0veM2zfpt3Vkv2ElrF1JWTWXVeBiYqdAYwLuz~6Vj6D3nVA__"
+          alt="StayBot"
+        />
       </div>
     </div>
   );

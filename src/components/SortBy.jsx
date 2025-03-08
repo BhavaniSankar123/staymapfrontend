@@ -12,18 +12,18 @@ const SortBy = () => {
         <div className="relative  -right-36 -top-24">
           {dropdownSortby && (
             <div className="relative p-1   text-sm  w-[130px] bg-white rounded-md shadow-md shadow-black z-10">
-              <a
+              <button
                 href="#"
                 className="block px-4 py-1 w-40 text-gray-800 hover:bg-gray-200"
               >
                 Price(High-Low)
-              </a>
-              <a
+              </button>
+              <button
                 href="#"
                 className="block px-4 py-1 w-40 text-gray-800 hover:bg-gray-200"
               >
                 Price(Low-High)
-              </a>
+              </button>
               <a
                 href="#"
                 className="block px-4 py-1 w-40 text-gray-800 hover:bg-gray-200"

@@ -1,94 +1,46 @@
 import React, { useState } from "react";
+import {
+  locality,
+  gender,
+  occupancy,
+  amenties,
+  services,
+  bhk,
+  parking,
+  accessibility,
+} from "../utils/Constants";
 
 const Filters = () => {
-  const [Localities, setLocalities] = useState({
-    Madhapur: false,
-    Gachibowli: false,
-    HiTechCity: false,
-    Ameerpet: false,
-    Secunderabad: false,
-  });
-  const [PriceRange, setPriceRange] = useState({
-    MinPrice: 5000,
-    MaxPrice: 15000,
-  });
-  const [gender, setGender] = useState({
-    Male: false,
-    Female: false,
-    CoLive: false,
-  });
-  const [Occupancy, setOccupancy] = useState({
-    SingleOccupancy: false,
-    DoubleOccupancy: false,
-    TripleOccupancy: false,
-    QuadrapleOccupancy: false,
-    QuintupleOccupancy: false,
-  });
-  const [Amenties, setAmenties] = useState({
-    AttachedBathroom: false,
-    AirConditioner: false,
-    AttachedWashroom: false,
-    StorgeShelf: false,
-    SpaciousCupboard: false,
-    Cooler: false,
-  });
-  const [Services, setServices] = useState({
-    HotandDeliciousMeals: false,
-    HighSpeedWIFI: false,
-    PowerBackup: false,
-    WorkoutZone: false,
-    WashingMachine: false,
-  });
-  const [BHKType, setBHKType] = useState({
-    OneBHK: false,
-    TwoBHK: false,
-    ThreeBHK: false,
-    FourBHK: false,
-  });
-  const [RoomType, setRoomType] = useState({
-    AC: false,
-    NonAC: false,
-  });
-  const [ParkingAvailability, setParkingAvailability] = useState({
-    TwoWheeler: false,
-    ThreeWheeler: false,
-    FourWheeler: false,
-  });
-  const [AccessibilityFilters, setAccessibilityFilters] = useState({
-    Lift: false,
-    WheelchairFriendly: false,
-  });
-  const [MoreFilters, setMoreFilters] = useState({
-    SelfCooking: false,
-  });
+  const [selectedButtons, setSelectedButtons] = useState([]);
+
+  const handleButtonClick = (item) => {
+    if (selectedButtons.includes(item)) {
+      setSelectedButtons(
+        selectedButtons.filter((selected) => selected !== item)
+      );
+    } else {
+      setSelectedButtons([...selectedButtons, item]);
+    }
+  };
+
   return (
     <div className="text-[#909090]  gap-4 pl-4">
       <h1 className="text-black place-self-center text-4xl ">Filters</h1>
       <div>
         <h1 className="text-xl">Localities</h1>
         <div className="grid  grid-cols-3 mt-4 gap-4">
+          {locality.map((local) => (
+            <div key={local}>
+              <input
+                type="checkbox"
+                name="locality"
+                className="text-[#005ca8]  checked:bg-[#1D9BFF] checked:text-[#1D9BFF]"
+              />
+              <label>{local}</label>
+            </div>
+          ))}
           <div>
-            <input type="checkbox" name="locality" />
-            <label>Madhapur</label>
-          </div>
-          <div>
-            <input type="checkbox" name="locality" />
-            <label>Gachibowli</label>
-          </div>
-          <div>
-            <input type="checkbox" name="locality" />
-            <label>Hi-Tech City</label>
-          </div>
-          <div>
-            <input type="checkbox" name="locality" />
-            <label>Ameerpet</label>
-          </div>
-          <div>
-            <input type="checkbox" name="locality" />
-            <label>Secunderabad</label>
-          </div>
-          <div>
-            <button className="text-[#1D9BFF]">+ More...</button>
+            <button className="text-[#005ca8]">+ More...</button>
           </div>
         </div>
       </div>
@@ -127,108 +79,71 @@ const Filters = () => {
       <div className="mt-4">
         <h1 className="text-xl">Gender</h1>
         <div className="flex space-x-4 mt-4">
-          <div>
-            <input type="radio" id="male" name="gender" />
-            <label htmlFor="male">Male</label>
-          </div>
-          <div>
-            <input type="radio" id="female" name="gender" />
-            <label htmlFor="female">Female</label>
-          </div>
-          <div>
-            <input type="radio" id="co-live" name="gender" />
-            <label htmlFor="co-live">Co-live</label>
-          </div>
+          {gender.map((gen) => (
+            <div key={gen}>
+              <input type="radio" id={gen} name="gender" />
+              <label htmlFor={gen}>{gen}</label>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">Occupancy</h1>
         <div className="grid  grid-cols-2 mt-4 gap-4">
-          <div>
-            <input type="checkbox" name="occupancy" id="single" />
-            <label htmlFor="single">Single Occupancy</label>
-          </div>
-          <div>
-            <input type="checkbox" name="occupancy" id="double" />
-            <label htmlFor="double">Double Occupancy</label>
-          </div>
-          <div>
-            <input type="checkbox" name="occupancy" id="triple" />
-            <label htmlFor="single">Triple Occupancy</label>
-          </div>
-          <div>
-            <input type="checkbox" name="occupancy" id="quadruple" />
-            <label htmlFor="single">Quadraple Occupancy</label>
-          </div>
-          <div>
-            <input type="checkbox" name="occupancy" id="quintuple" />
-            <label htmlFor="single">Quintuple Occupancy</label>
-          </div>
+          {occupancy.map((occ) => (
+            <div key={occ}>
+              <input type="checkbox" name="occupancy" id={occ} />
+              <label htmlFor={occ}>{occ}</label>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">Amenties</h1>
         <div className="grid  grid-cols-2 mt-4 gap-4">
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Attached Bathroom
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Air Conditioner
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Attached Washroom
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Storge Shelf
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Spacious Cupboard
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Cooler
-          </button>
+          {amenties.map((amen) => (
+            <button
+              key={amen}
+              className={`border border-[#909090] rounded-md w-36 p-1 ${
+                selectedButtons.includes(amen)
+                  ? "bg-[#005ca8] text-white"
+                  : "bg-white text-black"
+              }`}
+              onClick={() => handleButtonClick(amen)}
+            >
+              {amen}
+            </button>
+          ))}
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">Services</h1>
         <div className="grid  grid-cols-2 mt-4 gap-4">
-          <button className="border border-[#909090] bg-white rounded-md w-44 p-1">
-            Hot and Delicious Meals
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            High-Speed WIFI
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Power Backup
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Workout Zone
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Washing Machine
-          </button>
-          <button className="text-[#1D9BFF]">+ More...</button>
+          {services.map((serv) => (
+            <button
+              key={serv}
+              className={`border border-[#909090] rounded-md w-36 p-1 ${
+                selectedButtons.includes(serv)
+                  ? "bg-[#005ca8] text-white"
+                  : "bg-white text-black"
+              }`}
+              onClick={() => handleButtonClick(serv)}
+            >
+              {serv}
+            </button>
+          ))}
+          <button className="text-[#005ca8]">+ More...</button>
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">BHK Type</h1>
         <div className="flex space-x-4">
-          <div>
-            <input type="checkbox" name="bhk" id="1bhk" />
-            <label htmlFor="1bhk">1 BHK</label>
-          </div>
-          <div>
-            <input type="checkbox" name="bhk" id="2bhk" />
-            <label htmlFor="2bhk">2 BHK</label>
-          </div>
-          <div>
-            <input type="checkbox" name="bhk" id="3bhk" />
-            <label htmlFor="3bhk">3 BHK</label>
-          </div>
-          <div>
-            <input type="checkbox" name="bhk" id="4bhk" />
-            <label htmlFor="4bhk">4 BHK</label>
-          </div>
+          {bhk.map((bhk) => (
+            <div key={bhk}>
+              <input type="checkbox" name="bhk" id={bhk} />
+              <label htmlFor={bhk}>{bhk}</label>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">
@@ -247,34 +162,35 @@ const Filters = () => {
       <div className="mt-4">
         <h1 className="text-xl">Parking Availability</h1>
         <div className="flex space-x-4">
-          <div>
-            <input type="checkbox" name="parking" id="2w"></input>
-            <label htmlFor="2w">2 Wheeler</label>
-          </div>
-          <div>
-            <input type="checkbox" name="parking" id="3w"></input>
-            <label htmlFor="3w">3 Wheeler</label>
-          </div>
-          <div>
-            <input type="checkbox" name="parking" id="4w"></input>
-            <label htmlFor="4w">4 Wheeler</label>
-          </div>
+          {parking.map((park) => (
+            <div key={park}>
+              <input type="checkbox" name="parking" id={park} />
+              <label htmlFor={park}>{park}</label>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">Accessibility Filters</h1>
         <div className="flex space-x-4">
-          <button className="border border-[#909090] bg-white rounded-md w-24 p-1">
-            Lift
-          </button>
-          <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
-            Wheelchair Friendly
-          </button>
+          {accessibility.map((access) => (
+            <div key={access}>
+              <input type="checkbox" name="accessibility" id={access} />
+              <label htmlFor={access}>{access}</label>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">
         <h1 className="text-xl">More Filters</h1>
-        <button className="border border-[#909090] bg-white rounded-md w-36 p-1">
+        <button
+          className={`border border-[#909090] rounded-md w-36 p-1 ${
+            selectedButtons.includes("selfcook")
+              ? "bg-[#005ca8] text-white"
+              : "bg-white text-black"
+          }`}
+          onClick={() => handleButtonClick("selfcook")}
+        >
           Self Cooking
         </button>
       </div>

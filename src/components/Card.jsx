@@ -4,36 +4,36 @@ import { FaBookmark } from "react-icons/fa";
 import { CgToggleOn } from "react-icons/cg";
 import { FaToggleOn } from "react-icons/fa6";
 import { IoIosSend } from "react-icons/io";
-import { TbView360Number } from "react-icons/tb";
-import { IoWifi } from "react-icons/io5";
-import { TbAirConditioning } from "react-icons/tb";
-import { IoBedOutline } from "react-icons/io5";
+import { TbView360Number, TbAirConditioning } from "react-icons/tb";
+import { IoWifi, IoBedOutline } from "react-icons/io5";
+import { image1 } from "../utils/Constants";
+
 const Card = () => {
   const [isToggle, setIsToggle] = useState(false);
   return (
-    <div className="ml-2 relative w-[100%] h-72">
-      <button className=" absolute -top-2 -left-2 bg-[#1D9BFF] opacity-70 text-white p-2">
+    <div className="ml-2 w-full relative">
+      <button className=" absolute -top-3 -left-5 bg-[#1D9BFF] w-24 h-12 text-white verified p-1 pl-3 text-sm">
         Verified+
       </button>
-      <div className="flex p-2 bg-gradient-to-t from-[#67BDFF]  via-white to-[#67BDFF] from-2% via-98% to-2% items-center w-[100%] rounded-md border-black shadow-md">
-        {/* bg-gradient-to-t from-[#67BDFF]  via-white to-*/}
-        <div className="relative">
-          <img
-            src="https://tinyurl.com/3y3888sn"
-            alt="https://placehold.co/266x165"
-          />
-          <div className=" relative bg-[#008EFF]/40 -mt-8 rounded-full text-white w-48 h-12 p-2 flex items-cwnter justify-center">
+      <div className=" flex p-2 h-72 w-full  bg-gradient-to-t from-[#67BDFF]  via-white to-[#67BDFF] from-2% via-98% to-2% items-center w-[100%] rounded-md border-black shadow-md">
+        <div
+          style={{ backgroundImage: `url(${image1})` }}
+          className="relative w-72 h-52 bg-cover"
+        >
+          <div className="top-40 left-0 w-[75%] relative bg-[#008EFF]/40 rounded-tr-full text-white w-48 h-12 p-2 flex items-cwnter justify-center">
             <IoBedOutline /> <p>Beds Available</p>
           </div>
         </div>
-        <div className="p-4 ">
-          <div className="flex space-x-3 text-gray-500">
+        <div className="p-4 w-[80%]">
+          <div className="flex space-x-3 text-[#909090]">
             <p>Joy stayz premium coliving spaces PG/Paying Guest </p>
             <CiLocationOn className="text-xl text-green-700" />
             <p>Madhapur</p>
-            <div className="relative -mt-12 -right-40">
-              <FaBookmark className="text-blue-700 text-7xl p-0" />
-              <p className="text-white -mt-10 ml-4">Boys</p>
+            <div className="relative -mt-16 -right-36">
+              <button className=" pgtag absolute top-4  h-16 bg-[#2667FF] border-2 border-dotted border-white outline text-white p-2">
+                Boys
+              </button>
+              {/* <p className="text-white -mt-12 ml-4">Boys</p> */}
             </div>
           </div>
           <hr className="border border-[#909090] mt-4" />
@@ -59,7 +59,6 @@ const Card = () => {
               <span>₹15,000</span>
             </div>
             <div className="flex pl-4">
-              {/* <CgToggleOn className="text-blue-600 text-2xl w-5" /> */}
               <p>AC</p>
               <div className="-mt-2">
                 {isToggle ? (
