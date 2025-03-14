@@ -41,9 +41,9 @@ const Navbar = () => {
         staymap
       </Link>
       <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1">
           <p className="text-white font-bold">POST PROPERTY</p>
-          <button className="bg-white text-black text-align font-bold w-10 h-6 rounded-md">
+          <button className="text-[#005ca8] bg-white text-align font-bold w-10 h-6 rounded-md shadow shadow-[#777]">
             FREE
           </button>
         </div>
@@ -56,7 +56,7 @@ const Navbar = () => {
             <RiArrowDropDownLine className="text-white-800 text-3xl " />
           </button>
           {dropdownExplore && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+            <div className="absolute text-sm right-6 -mt-2 w-auto bg-white rounded-md shadow-lg z-10">
               <Link
                 to={"/about"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
@@ -90,7 +90,7 @@ const Navbar = () => {
             <RiArrowDropDownLine className="text-white-800  text-3xl" />
           </button>
           {dropdownProfile && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+            <div className="absolute text-sm -right-4 -mt-2 w-auto bg-white rounded-md shadow-lg z-10">
               <Link
                 to={"/login"}
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
@@ -110,7 +110,7 @@ const Navbar = () => {
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-200"
                 onClick={() => setDropdownProfile(false)}
               >
-                Recently Used
+                Recently Viewed
               </Link>
             </div>
           )}

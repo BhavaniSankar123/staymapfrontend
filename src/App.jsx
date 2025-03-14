@@ -8,6 +8,7 @@ import {
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Team from "./pages/Team";
+import PgCard from "./pages/PgCard";
 const Navbar = lazy(() => import("./components/Navbar"));
 const Footer = lazy(() => import("./components/Footer"));
 const Home = lazy(() => import("./pages/Home"));
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/login" element={<Contact />} />
           <Route path="/favourites" element={<Contact />} />
           <Route path="/recentlyused" element={<Contact />} />
+          <Route path="/card" element={<PgCard />} />
         </Routes>
         <Footer />
       </Suspense>

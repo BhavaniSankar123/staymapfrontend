@@ -24,7 +24,7 @@ const Filters = () => {
   };
 
   return (
-    <div className="text-[#909090]  gap-4 pl-4">
+    <div className="text-[#909090]  gap-4 pl-4 overflow-auto h-96 scroll-smooth">
       <h1 className="text-black place-self-center text-4xl ">Filters</h1>
       <div>
         <h1 className="text-xl">Localities</h1>
