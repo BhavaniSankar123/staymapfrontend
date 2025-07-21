@@ -1,8 +1,20 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+module.exports = {
+  content: ["/index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
-  },
+    extend: {
+      customBlue: "#1e40af",
+    },
+      },
+    compilerOptions: {
+      baseUrl: "src",
+      paths: {
+        '@components/*': ['components/*'],
+        '@pages/*': ['pages/*'],
+        '@utils/*': ['utils/*'],
+        '@assets/*': ['assets/*'],
+        '@styles/*': ['styles/*']
+      }
+    },
+  
   plugins: [],
 };

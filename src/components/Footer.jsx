@@ -1,71 +1,150 @@
-import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import logo from "/assets/logo2.png";
+import { useLocation } from "react-router-dom";
+import {
+  contactInfo,
+  footerLinks,
+  popularLocalities,
+  quickLinks,
+  socialLinks,
+} from '@utils/Constants';
+
 const Footer = () => {
+  const location = useLocation();
+  const showMvButtons = location.pathname.startsWith("/property/");
+
   return (
-    <div className="bg-[#005CA8] text-white p-6 h-72 mt-4">
-      <div className="mx-auto pt-10 flex flex-col gap-8 justify-center items-center">
-        <div className="flex space-x-8 w-300 justify-between">
-          <p>About Us</p>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
-          <p>Careers</p>
-          <p>Help Center</p>
-          <p>Site Map</p>
+    <>
+      <div
+        className={`bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white ${showMvButtons ? "mb-[3.6rem]" : ""
+          } md:mb-0`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="flex items-center gap-2">
+                <img
+                  className="h-10 w-10 md:h-10 md:w-10"
+                  src={logo}
+                  alt="Logo"
+                />
+                <h2 className="text-2xl font-bold">Staymap</h2>
+              </div>
+              <p className="text-blue-100 opacity-90 text-sm">
+                India's most trusted Accommodation platform
+              </p>
+              <div className="flex space-x-3 sm:space-x-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    className="bg-white/10 hover:bg-white/20 p-2  rounded-full transition-colors"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden md:block space-y-4 sm:space-y-6">
+              <h3 className="text-lg font-semibold border-b border-white/20 pb-2">
+                Quick Links
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {quickLinks.map((item, index) => (
+                  <li key={index}>
+                    <a
+                      href={item.href}
+                      target={item.label === "Virtual Tours" ? "_blank" : "_self"}
+                      className="hover:text-blue-300 transition-colors flex items-center text-sm"
+                    >
+                      <span className="mr-2">→</span>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold border-b border-white/20 pb-2">
+                Stay Updated
+              </h3>
+              <div className="space-y-4">
+                {contactInfo.map((contact) => (
+                  <a className="flex items-center" key={contact.label} href={contact.label === "Support Line" ? "tel:6281333937" : contact.label === "Email" ? "mailto:support@staymap.in" : " https://maps.app.goo.gl/qv5SSeVo1hx39BVy8 "} >
+                    <div className="bg-white/10 p-2 rounded-full mr-3">
+                      {contact.icon}
+                    </div>
+                    <div>
+                      <p
+                        className="text-sm text-blue-200" >
+                        {contact.label}
+                      </p>
+                      <p className="font-medium text-sm">{contact.text}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2 sm:space-y-6">
+              <h3 className="text-lg font-semibold border-b border-white/20 pb-2">
+                Popular Localities
+              </h3>
+              <ul className="grid grid-cols-2 gap-2 sm:gap-3">
+                {popularLocalities.map((locality) => (
+                  <a
+                    key={locality}
+                    href={`/?city=${encodeURIComponent(locality)}`}
+                    className="bg-white/5 cursor-pointer hover:bg-white/10 px-2 py-2 rounded-md text-xs transition-colors text-center"
+                  >
+                    {locality}
+                  </a>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="flex space-x-10 text-sm">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black  text-2xl hover:text-blue-500"
-          >
-            <FaFacebook size={24} />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-blue-500"
-          >
-            <FaTwitter size={24} />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-blue-500"
-          >
-            <FaLinkedin size={24} />
-          </a>
-          <a
-            href="https://whatsapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-green-600"
-          >
-            <IoLogoWhatsapp size={24} />
-          </a>
-          <a
-            href="mailto:info@staymap.com"
-            className="text-black hover:text-white"
-          >
-            <FaEnvelope size={24} />
-          </a>
-        </div>
-        <div className="mt-4 text-center text-white">
-          <p>&copy;2025 | All Rights Reserved by Staymap Pvt Ltd.</p>
+        {/* 
+        <div className="flex items-center justify-center pb-3">
+          <div className="bg-white/10 md:w-2/5 p-4 rounded-xl mt-3 text-center">
+            <h4 className="font-medium text-sm mb-2">Get exclusive offers</h4>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="flex-grow px-2 py-1 sm:px-3 sm:py-2 rounded-l-lg bg-white/5 border border-white/20 focus:outline-none text-xs sm:text-sm"
+              />
+              <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 sm:px-4 sm:py-2 rounded-r-lg text-xs sm:text-sm font-medium transition-colors">
+                Join
+              </button>
+            </div>
+          </div>
+        </div> */}
+
+        <div className="border-t border-white/10 py-4 sm:py-6">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex flex-col md:flex-row space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
+              <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 sm:gap-x-4 sm:gap-y-0 text-center sm:text-left">
+                {footerLinks.map((link) => (
+                  <a
+                    key={link.text}
+                    href={link.href}
+                    className="text-sm hover:text-blue-300 transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+              <p className="text-sm text-blue-200 text-center sm:text-right">
+                <span className="text-[0.9rem]">©</span>2025 Staymap. All rights reserved.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex justify-center items-center text-[#004080] fixed bottom-[5%] bg-white size-16 rounded-full right-2 ">
-        {/* <FaMapMarkerAlt className="text-[#004080] text-5xl" /> */}
-        <img
-          src="https://s3-alpha-sig.figma.com/img/25ac/3374/4f7fb7989e767db6b0c43ff63dbd542d?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=e99~INFN0j1RhJIvhfbPxwywpjpTiqVgZ9IPgYVPeAROfZ5jTaXZofcUZBI4KpH5uXv9ALYgJYT-JbB5jAR-Si~SPtQfdl7axjif51cV0Vj6xAFWKmGZW7O6GODLS4y20hVYFhi6zFZTWnh-Neevp-jsQ6f-oyTSIgqtUKDK1NCGBD5F82Tx1oss1QIIgvJIEI9xTQpn-UVt~MeMZNrBj8r983dsZByoE~3inWbUZj8NwW4nDItK~~OCobIW9TpwwUv81vSHfOXGx0XXEhXIac4NuKOSVtd4WHAXaMB0veM2zfpt3Vkv2ElrF1JWTWXVeBiYqdAYwLuz~6Vj6D3nVA__"
-          alt="StayBot"
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

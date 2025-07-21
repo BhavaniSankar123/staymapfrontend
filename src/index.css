@@ -1,28 +1,134 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 1.5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1d4ed8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+@layer utilities {
+  .custom-gradient {
+    @apply bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white;
+  }
+
+  .custom-gradient-text {
+    @apply bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-transparent bg-clip-text;
+  }
+}
+
+body {
+  scrollbar-width: thin;
+  background-color: #f0f0f0;
+  color: #333;
+  overflow-x: hidden;
   box-sizing: border-box;
   user-select: none;
-  outline: none;
-  font-size: medium;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .verified {
   position: absolute;
-  width: 80px;
-  height: 24px;
-  left: -21px;
-  top: -11px;
-  background: #1d9bff;
+  font-size: 12px !important;
+  width: 6rem;
+  height: 2rem;
+  left: -1.5rem;
+  top: -1rem;
 }
+
 .verified {
   clip-path: polygon(0 0, 20% 50%, 0 100%, 80% 100%, 100% 50%, 80% 0);
 }
+
 .pgtag {
   clip-path: polygon(0 0, 0 100%, 50% 70%, 100% 100%, 100% 0);
 }
+
+.filters-container::-webkit-scrollbar {
+  width: 2px;
+  height: 0px;
+}
+
+.filters-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.filters-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.filters-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+.slick-dots li button:before {
+  @apply text-white;
+}
+
+.slick-dots li.slick-active button:before {
+  @apply text-white;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.rotate-animation {
+  animation: rotate360 3s infinite ease-in-out;
+}
+
+@keyframes fadeBlink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
